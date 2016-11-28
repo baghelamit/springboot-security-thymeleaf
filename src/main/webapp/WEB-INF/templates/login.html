@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Log In</title>
+    <script th:src="@{/static/js/jquery-1.12.4.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"></link>
+</head>
+<body>
+<h2 class="page-header">Log In</h2>
+<div class="container">
+	<div class="row">
+		  <div th:if="${message != null}" class="alert alert-success lead" th:text="${message}"></div>
+	  	  <div th:if="${error != null}" class="alert alert-danger lead" th:text="${error}"></div> 
+	</div> 
+	<div class="row login-form">
+	    <form method="POST" th:action="@{/login}">    
+	        <div class="form-group">
+		      <label for="username">User Name:</label>
+		      <input id="username" name="username" type="text" class="form-control" autofocus="true"/>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="password">Password:</label>
+		      <input id="password" name="password" type="password" class="form-control"/>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="rememberme">Remember-Me:</label>
+		      <input type="checkbox" id="rememberme"  name="remember-me"/>
+	    	</div>
+	    	<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>         
+	        <div th:if="${message == null}"><h4 class="text-center"><a th:href="@{/registration}">Create an account</a></h4></div>
+	    </form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Create an account</title>
+    <script th:src="@{/static/js/jquery-1.12.4.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"></link>
+</head>
+<body>
+<h2 class="page-header">Create your account</h2>
+<div class="container">
+       <div class="row other-form">
+           <form method="POST" th:action="@{/registration}" th:object="${userForm}" enctype="multipart/form-data">
+            <div class="form-group">
+		      <label for="username">User Name:</label>
+		      <input th:field="*{userName}" type="text" class="form-control" autofocus="true"/>
+		      <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="password">Password:</label>
+		      <input th:field="*{password}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="confirmPassword">Confirm Password:</label>
+		      <input th:field="*{confirmPassword}" type="password" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="firstName">First Name:</label>
+		      <input th:field="*{firstName}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="lastName">Last Name:</label>
+		      <input th:field="*{lastName}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="email">Email:</label>
+		      <input th:field="*{email}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		     <label for="dateOfBirth">Date of Birth:</label>
+		     <input th:field="*{dateOfBirth}" type="text" class="form-control" autofocus="true"/>
+	         <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" th:errorclass="field-error"></p>
+	   		</div>
+	   		<div class="form-group">
+		     <label for="gender">Gender:</label>
+		   	 <select th:field="*{gender}" class="form-control" autofocus="true">
+		            	<option value="">Select Gender</option>
+	  					<option th:value="MALE">Male</option>
+	  					<option th:value="FEMALE">Female</option>
+			 </select>  			
+	          <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" th:errorclass="field-error"></p>
+	   		</div>
+	   		<div class="form-group">
+		     <label for="imageFile">Image File:</label>
+				<input th:field="*{imageFile}" type="file" class="form-control" autofocus="true"/>
+	            <p th:if="${#fields.hasErrors('imageFile')}" th:errors="*{imageFile}" th:errorclass="field-error"></p>
+	   		</div>
+	   		
+	   		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>   
+    </form>
+    </div>
+  </div>
+</body>
+</html>

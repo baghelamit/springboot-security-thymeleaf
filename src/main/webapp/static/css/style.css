@@ -1,0 +1,45 @@
+.login-form {
+    background-color:#ddd;
+    color:#666;
+    padding:25px;
+    border-radius:20px;
+    position: absolute;
+    border:1px solid #210202;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+}
+
+.list-table th {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white; 
+}
+
+.list-table tr {
+    text-align: center;
+}
+
+.list-table>tbody:nth-of-type(odd){
+	background-color: #B6EA7D;
+}
+
+.list-table>tbody:nth-of-type(even){
+	background-color: #BFEAA3;
+}
+
+.field-error{
+	color:red;
+}
+
+.other-form {
+    background-color:#ddd;
+    color:#666;
+    padding:25px;
+    border-radius:20px;
+    width: 320px;
+}

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>Edit your account</title>
+    <script th:src="@{/static/js/jquery-1.12.4.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"></link>
+</head>
+<body>
+<h2 class="page-header">Edit your account</h2>
+<div class="container">
+		<form id="logoutForm" method="POST" th:action="@{/logout}">
+ 		  <div align="right" th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">		
+            <h4> Hello <span sec:authentication="name"></span> |					
+            	Roles: <span sec:authentication="principal.authorities"></span> |
+            	<a onclick="document.forms['logoutForm'].submit()">Logout</a>
+            </h4>  			
+          </div>
+        </form>  
+ 	 <div class="row other-form">
+ 		<form method="POST" th:action="@{/edit/{id}(id=${userEditForm.userName})}" th:object="${userEditForm}">      	
+            <div class="form-group">
+		      <label for="image">Image:</label>
+				<img th:attr="src=@{'data:image/png;base64,'+${userEditForm.base64EncodedImage}}" alt="avatar" height="120" width="120"/>
+				<input type="hidden" th:field="*{base64EncodedImage}" />
+	    	</div>           
+            <div class="form-group">
+		      <label for="firstName">First Name:</label>
+		      <input th:field="*{firstName}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		      <label for="lastName">Last Name:</label>
+		      <input th:field="*{lastName}" type="text" class="form-control" autofocus="true"/>
+	          <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:errorclass="field-error"></p>
+	    	</div>
+	    	<div class="form-group">
+		     <label for="lastName">Date of Birth:</label>
+		     <input th:field="*{dateOfBirth}" type="text" class="form-control" autofocus="true"/>
+	         <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" th:errorclass="field-error"></p>
+	   		</div>
+	   		<div class="form-group">
+		     <label for="lastName">Gender:</label>
+		   	 <select th:field="*{gender}" class="form-control" autofocus="true">
+		            	<option value="">Select Gender</option>
+	  					<option th:value="MALE">Male</option>
+	  					<option th:value="FEMALE">Female</option>
+			 </select>  			
+	          <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" th:errorclass="field-error"></p>
+	   		</div>
+	   		
+	   		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>   
+    </form>
+     </div>
+  </div>
+</body>
+</html>
